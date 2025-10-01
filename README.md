@@ -1,4 +1,6 @@
-# 📘 Proyecto: Servicios Telemáticos con Firewall, DNS Maestro/Esclavo y FTP Seguro
+# 📘 PARCIAL 2: Servicios Telemáticos con Firewall, DNS Maestro/Esclavo y FTP Seguro
+
+✍️ Autor: *Laura Victoria Gallo Payana 2220903*  
 
 Este proyecto implementa y valida tres servicios principales en un entorno de red local con servidores y un cliente, protegidos por un **firewall con iptables**.  
 
@@ -147,5 +149,5 @@ Debe resolverse con estatus `NOERROR` y mostrar la IP pública de Google y compr
 
 ---
 
-✍️ Autor: *Laura Victoria Gallo Payana 2220903*  
+
 📅 Parcial 2 de **Servicios Telemáticos**  
