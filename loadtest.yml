@@ -1,0 +1,14 @@
+config:
+  target: "http://192.168.50.30"   # IP del balanceador
+  phases:
+    - duration: 60       # duración en segundos
+      arrivalRate: 10    # usuarios nuevos por segundo
+  defaults:
+    headers:
+      Accept: "text/html"
+
+scenarios:
+  - name: "Prueba de carga balanceador NGINX"
+    flow:
+      - get:
+          url: "/"
