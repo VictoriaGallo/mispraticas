@@ -1,0 +1,17 @@
+config:
+  target: "http://192.168.56.30" # IP del balanceador con algoritmo least_conn
+  phases:
+    - duration: 90 # segundos de prueba
+      arrivalRate: 200 # usuarios por segundo (carga alta)
+  defaults:
+    headers:
+      Content-Type: "application/json"
+
+scenarios:
+  - name: "Prueba balanceador Least Connections - Carga Alta"
+    flow:
+      - get:
+          url: "/"
+      - think: 1
+      - get:
+          url: "/"

@@ -1,0 +1,17 @@
+config:
+  target: "http://192.168.56.20" # IP del balanceador con algoritmo ip_hash
+  phases:
+    - duration: 60 # duración total de la prueba (segundos)
+      arrivalRate: 50 # usuarios por segundo (carga media)
+  defaults:
+    headers:
+      Content-Type: "application/json"
+
+scenarios:
+  - name: "Prueba balanceador IP Hash - Carga Media"
+    flow:
+      - get:
+          url: "/"
+      - think: 1
+      - get:
+          url: "/"

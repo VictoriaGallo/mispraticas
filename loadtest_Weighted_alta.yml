@@ -1,0 +1,14 @@
+config:
+  target: "http://192.168.56.10"
+  phases:
+    - duration: 120 # 2 minutos de prueba
+      arrivalRate: 400 # 400 usuarios por segundo (carga alta)
+  defaults:
+    headers:
+      Accept: "text/html"
+
+scenarios:
+  - name: "Carga Muy Alta - Algoritmo Weighted (Balanceador NGINX)"
+    flow:
+      - get:
+          url: "/"
