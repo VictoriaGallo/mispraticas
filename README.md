@@ -1,7 +1,9 @@
 # Proyecto Final - Balanceador de Carga con NGINX y Pruebas con Artillery
 
 **Materia:** Servicios Telemáticos  
+
 **Autores:** Laura Gallo, Kelvin Martinez, Santiago Duque y Nicolas Cuellar
+
 **Fecha:** 11 de noviembre de 2025  
 
 ---
@@ -27,7 +29,7 @@ proyecto-balanceador/
 │   ├── web.sh
 │   └── lb.sh
 ├── artillery/
-│   └── loadtest.yml
+│   └── todos los archivos terminados en .yml
 └── README.md
 ```
 
