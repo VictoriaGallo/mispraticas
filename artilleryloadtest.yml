@@ -1,0 +1,48 @@
+config:
+  target: "http://192.168.50.30"   # IP del balanceador (lb)
+  # Fases diseñadas para cumplir con "variar parámetros" y observar comportamiento
+  phases:
+    - name: "Smoke"
+      duration: 30          # 30s para validar que todo responde (200)
+      arrivalRate: 5        # 5 usuarios/seg
+    - name: "Ramp-up"
+      duration: 60          # aumenta gradualmente la llegada
+      arrivalRate: 10
+      rampTo: 50            # sube hasta 50 usuarios/seg
+    - name: "Spike"
+      duration: 30          # pico breve para ver resiliencia del LB
+      arrivalRate: 80       # estrés controlado
+    - name: "Soak"
+      duration: 120         # carga sostenida para ver estabilidad
+      arrivalRate: 30
+  defaults:
+    headers:
+      Accept: "text/html"
+  http:
+    timeout: 10             # seg; evita que una respuesta colgada distorsione métricas
+  plugins:
+    expect: {}              # habilita aserciones (ver abajo)
+
+scenarios:
+  # Escenario mayoritario: GET simple al root del sitio
+  - name: "GET / basico"
+    weight: 7
+    flow:
+      - get:
+          url: "/"
+          expect:
+            - statusCode: 200
+      - think: 1            # pausa breve para emular usuario humano
+
+  # Escenario de ráfagas cortas para simular “recursos estáticos”
+  - name: "Rafagas cortas"
+    weight: 3
+    flow:
+      - loop:
+          count: 5
+          do:
+            - get:
+                url: "/"
+                expect:
+                  - statusCode: 200
+            - think: 0.2
