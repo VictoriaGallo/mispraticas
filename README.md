@@ -152,7 +152,7 @@ scenarios:
 ```
 ### Ejecutar prueba
 ```
-artillery run artillery/loadtest.yml --record –k “la clave”
+artillery run artillery/ARCHIVOTEST.yml --record –k “la clave”
 
 ```
 📘 El comando artillery con la clave perzonalizada la da en la pagina de **https://app.artillery.io** vicular con tu cuenta de Github
