@@ -1,7 +1,8 @@
 # Proyecto Final Servicios Telemáticos
 
 Despliegue Seguro, Monitoreo y Visualización de Mini Web App en AWS con Docker, Prometheus y Grafana
-Autor: Tu nombre — Universidad Autónoma de Occidente
+
+Autores: Laura Gallo y Kelvin Martinez — Universidad Autónoma de Occidente
 
 ## Descripción del Proyecto
 
@@ -49,12 +50,14 @@ cd /home/ubuntu/webapp
 docker compose up -d --build
 docker ps
 ```
+<img width="1082" height="467" alt="image" src="https://github.com/user-attachments/assets/748661ec-06f5-4fb2-a39f-3e16bc67e2b2" />
 
 ## Parte 2 – Despliegue en AWS EC2
 
 ✔ Instancia Ubuntu
 
 ✔ Security Group permitiendo puertos: 22, 80, 9090, 9100, 3000
+<img width="1367" height="691" alt="image" src="https://github.com/user-attachments/assets/0027966f-cc17-44d4-ade4-4c1861b5835e" />
 
 ✔ Clave SSH para acceso seguro
 
@@ -92,6 +95,9 @@ WantedBy=default.target
 ```bash
 sudo systemctl enable --now node_exporter
 ```
+<img width="900" height="494" alt="image" src="https://github.com/user-attachments/assets/e371371b-30b5-42a8-8f87-30a1713bd8f5" />
+
+<img width="900" height="248" alt="image" src="https://github.com/user-attachments/assets/13992c70-a932-4b56-96f1-820a099d347f" />
 
 ### Instalación Prometheus
 
@@ -123,6 +129,10 @@ Servicio:
 sudo systemctl daemon-reload
 sudo systemctl enable --now prometheus
 ```
+<img width="900" height="231" alt="image" src="https://github.com/user-attachments/assets/c5bf2ce7-0a6c-4177-aaf2-576c84a975ca" />
+
+<img width="900" height="455" alt="image" src="https://github.com/user-attachments/assets/edaa382e-4a26-47bd-9df1-b9d4d4417f01" />
+
 
 ## Parte 4 – Visualización con Grafana
 
@@ -151,14 +161,22 @@ admin / admin
 | Uso Memoria | `(node_memory_MemTotal_bytes - node_memory_MemAvailable_bytes) / node_memory_MemTotal_bytes * 100`        | TimeSeries    |
 | Uso Disco   | `100 - (node_filesystem_free_bytes{fstype!="tmpfs"} / node_filesystem_size_bytes{fstype!="tmpfs"} * 100)` | Gauge         |
 
+<img width="900" height="723" alt="image" src="https://github.com/user-attachments/assets/139c4024-c87c-4a88-a3e4-b477bdd62361" />
+
 
 Dashboard importado ID:
+```bash
 1860
+```
+<img width="900" height="409" alt="image" src="https://github.com/user-attachments/assets/d5c579b9-7226-4c29-b732-725ff54dca3d" />
 
-```bash
-```bash
-```bash
+## Conclusión Técnica
 
+Integrar Docker, AWS y Prometheus facilita despliegues reproducibles y observabilidad del sistema.
+
+Lo más retador fue el despliegue en EC2 por configuraciones de red y servicios, pero la solución estuvo en revisar logs, servicios y reglas de seguridad.
+
+La observabilidad permite detectar fallos antes que los usuarios, mejorar rendimiento y tomar decisiones basadas en métricas, clave en DevOps.
 
 
 
